@@ -1,20 +1,26 @@
 import { useState } from 'react'
 import './App.css'
 
-function ToDoList({ task }) {
+function ToDoList({ task, description }) {
   return (
-    <div className='tasks-display'>
-      <p>{task}</p>
+    <div className='display'>
+      <p className='task-display'><strong>{task}</strong></p>
+      <p className='description-display'>{description}</p>
     </div>
   )
 }
 
 function App() {
   const [task, setTask] = useState("")
+  const [description, setDescription] = useState("")
   const [tasks, setTasks] = useState([])
 
   function handleChange(e) {
     setTask(e.target.value)
+  }
+
+  function handleDescriptionChange(e) {
+    setDescription(e.target.value)
   }
 
   function handleAddTask(e) {
@@ -23,22 +29,37 @@ function App() {
       alert("Task is required")
     }
 
-    const newTask = { task }
+    const newTask = { task, description }
     setTasks(prevTasks => [...prevTasks, newTask])
-    setTask("") 
+    setTask("")
+    setDescription("")
   }
 
   return (
-    <div id='app'>
+    <div className='app'>
       <h1 className='app-title'>To Do List</h1>
       <form>
-        <input type="text" className='input' placeholder='Task' value={task} onChange={handleChange}
+        <input
+          type="text"
+          className='input'
+          placeholder='Task'
+          value={task}
+          onChange={handleChange}
         />
+
+        <input
+          type="text"
+          className='input'
+          placeholder='Description'
+          value={description}
+          onChange={handleDescriptionChange}
+        />
+
         <button onClick={handleAddTask}>+</button>
       </form>
 
       {tasks.map((task, idx) => (
-        <ToDoList key={idx} task={task.task} />
+        <ToDoList key={idx} task={task.task} description={task.description} />
       ))}
     </div>
   )

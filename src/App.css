@@ -8,27 +8,37 @@ html {
   font-size: 62.5%;
 }
 
+
 body {
   font-size: 1.8rem;
   padding: 4rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  
+  background-color: whitesmoke;
+}
+
+.app {
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .app-title {
   text-align: center;
   font-weight: bold;
+  margin: 2rem;
 }
 
 
 form {
   display: flex;
   justify-content: center;
+  gap: 1rem;
 }
 
 .input {
   font-family: inherit;
   font-size: inherit;
+  padding: .5rem;
 }
 
 button {
@@ -46,9 +56,19 @@ button {
   border-radius: .2rem;
 }
 
-.tasks-display {
-  width: 50%;
+.display {
+  display: flex;
+  width: 60%;
   margin: 1rem auto;
   justify-content: center;
   align-items: center;
 }
+
+.task-display {
+  width: 25%
+}
+
+.description-display {
+  width: 25%
+}
+
